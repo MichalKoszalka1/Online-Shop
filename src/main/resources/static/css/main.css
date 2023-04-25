@@ -1,0 +1,279 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html {
+  font-family: helvetica, arial, sans-serif;
+}
+
+/* relevant styles */
+.screen {
+  position: relative;
+  height: 300px;
+  width: 340px;
+}
+.categories {
+  position: relative; left: 50px; top: 45px.
+}
+
+.loudspeakers {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+
+.podkladka {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+
+.mouse {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+
+.keyboard {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+.TV {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+.gasStove {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+.microwave {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+.Fridge {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+.Radio {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+
+.cap {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+
+.hoodie {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+
+.jacket {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+
+.pants {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+
+.T-Shirt {
+  position: relative;
+  height: 300px;
+  width: 350px;
+}
+
+.set {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(36, 62, 206, 0.6);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.screen:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+.display {
+  transition: .2s;
+  transform: translateY(1em);
+}
+
+.screen:hover .display {
+  transform: translateY(0);
+}
+
+.loudspeakers:hover .display {
+  transform: translateY(0);
+}
+
+.loudspeakers:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+.podkladka:hover .display {
+  transform: translateY(0);
+}
+
+.podkladka:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+.mouse:hover .display {
+  transform: translateY(0);
+}
+
+.mouse:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+.keyboard:hover .display {
+  transform: translateY(0);
+}
+
+.keyboard:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+.TV:hover .display {
+  transform: translateY(0);
+}
+
+.TV:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.Radio:hover .display {
+  transform: translateY(0);
+}
+
+.Radio:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+.microwave:hover .display {
+  transform: translateY(0);
+}
+
+.microwave:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+.Fridge:hover .display {
+  transform: translateY(0);
+}
+
+.Fridge:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+.gasStove:hover .display {
+  transform: translateY(0);
+}
+
+.gasStove:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.cap:hover .display {
+  transform: translateY(0);
+}
+
+.cap:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.hoodie:hover .display {
+  transform: translateY(0);
+}
+
+.hoodie:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+.jacket:hover .display {
+  transform: translateY(0);
+}
+
+.jacket:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+.pants:hover .display {
+  transform: translateY(0);
+}
+
+.pants:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+
+.T-Shirt:hover .display {
+  transform: translateY(0);
+}
+
+.T-Shirt:hover .set {
+  visibility: visible;
+  opacity: 1;
+}
+.category{
+position:absolute;
+top:140px;
+left: 60px;
+
+}
+.name{
+position:absolute;
+top:5px;
+left:800px;
+}
+
+
+
+
+
+
+
+
+

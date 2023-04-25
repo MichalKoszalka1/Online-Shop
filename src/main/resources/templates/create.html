@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Create-Product</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+<body  style="background-color:black">
+<br><br><br><br>
+<div class="text-center"><span style="color:red"> <font size="7">Create Product</font></span></div>
+<br><br>
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-1"></div>
+    <div class="col-6">
+<form th:action="@{/addP}" method="post" enctype="multipart/form-data">
+    <!-- Name -->
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <div class="text-center"><label for="inputName"><span style="color:yellow"> <font size="5">Name</font></span></label></div>
+                <input type="text" name="pname" id="name" class="form-control" required
+                       placeholder="Product Name">
+            </div>
+        <!-- Price -->
+        <div class="form-group col-md-4">
+            <div class="text-center"><label for="inputPrice"><span style="color:yellow"> <font size="5">Price</font></span></label></div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+                <input type="number" name="costPrice" id="inputPrice" class="form-control" step="any" required
+                       placeholder="Product Price">
+
+        </div>
+    </div>
+        <!-- brand -->
+        <div class="form-group col-md-4">
+            <div class="text-center"><label for="brand"><span style="color:yellow"> <font size="5">Brand</font></span></label></div>
+            <input type="text" name="brand" id="brand" class="form-control"
+                   placeholder="Product brand">
+        </div>
+
+        <!-- condition -->
+    <div class="form-group col-md-4">
+        <div class="text-center"><label for="conditions"><span style="color:yellow"> <font size="5">Condition</font></span></label></div>
+            <select id="conditions"  name="conditions" class="form-control">
+                <option disabled="disabled" >Condition</option>
+                <option  >New</option>
+                <option  >Used</option>
+                <option  >Broken</option>
+                <option  >Incomplete Set</option>
+            </select>
+        </div>
+        <!-- size -->
+        <div class="form-group col-md-4">
+            <div class="text-center"><label for="sizes"><span style="color:yellow"> <font size="5">Size</font></span></label></div>
+        <input type="number" name="sizes" id="sizes" class="form-control" step="any"
+               placeholder="Product size (cm)">
+        </div>
+        <!-- mass -->
+        <div class="form-group col-md-4">
+            <div class="text-center"><label for="inputMass"><span style="color:yellow"> <font size="5">Mass</font></span></label></div>
+            <div class="input-group mb-4">
+                <input type="number" name="mass" id="inputMass"  class="form-control" step="any"
+                       placeholder="Product mass">
+                <div class="input-group-append">
+                    <span class="input-group-text">.oz</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+    <!-- quantity -->
+    <div class="form-group col-md-4">
+        <div class="text-center"><label for="quantity"><span style="color:yellow"> <font size="5">Quantity</font></span></label></div>
+        <input type="number" name="quantity" id="quantity" class="form-control" step="any"
+               placeholder="Product quantity">
+    </div>
+
+        <!-- category -->
+        <div class="form-group col-md-4">
+            <div class="text-center"><label for="category"><span style="color:yellow"> <font size="5">Category</font></span></label></div>
+            <select id="category"  name="category" class="form-control">
+                <option disabled="disabled" >Category</option>
+                <option  >AGD</option>
+                <option  >RTV</option>
+                <option  >CAR</option>
+                <option  >CLOTHES</option>
+                <option  >TOLLS</option>
+                <option  >TOY</option>
+                <option  >APARTMENT</option>
+                <option  >RENT</option>
+                <option  >HARDWARE</option>
+                <option  >GAME</option>
+                <option  >FOR FREE</option>
+                <option  >HOBBY</option>
+            </select>
+        </div>
+
+                    <!-- Description -->
+        <div class="form-group col-md-12"  >
+            <div class="text-center" ><label for="description"><span style="color:yellow"> <font size="5">Description</font></span></label></div>
+                    <textarea class="form-control" id="description" name="description"
+                              placeholder="Product Description">Product Description
+                                 </textarea>
+        </div>
+    </div>
+
+    <!-- Image -->
+    <div class="form-row">
+        <div class="text-center"><label for="customFiles"><span style="color:yellow"> <font size="5">Image</font></span></label> </div>
+        <div class="input-group mb-3">
+            <div class="custom-file">
+        <input type="file" name="image" class="custom-file-input"
+               id="customFile"> <label class="custom-file-label"
+                                       for="customFiles">Product Image</label>
+                </div>
+    </div>
+    </div>
+    <!-- Create -->
+    <button type="submit" class="btn btn-primary"><strong>Create</strong></button>
+
+  <div class="text-center"> <h2> <a class="navbar-brand" th:href="@{/cancel}">Stop Creating</a></h2></div>
+</form>
+    </div>
+</div>
+</body>
+</html>

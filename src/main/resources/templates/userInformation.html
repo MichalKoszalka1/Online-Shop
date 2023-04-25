@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset= "ISO-8859-1">
+  <title>User Information</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+<body style="background-image: url(img/black.jpg);">
+
+<div class="text-center">
+
+    <form  class="col-10" th:each="user: ${list}" method="post" enctype="multipart/form-data"
+           style="max-width:450px; margin: 0 auto;">
+        <br><br>
+          <!--  User-->
+        <div class="card" style="width: 30rem; background-color:gray;">
+            <b> <div class="card-header" style="background-color:gray"><font size="5"><strong>User</strong></font></div></b>
+            <ul class="list-group list-group-flush">
+
+                <!--   Picture-->
+                <label for="customFiles"><span style="color:red"> <font size="5">Picture</font></span></label>
+                <li class="list-group-item" ><img alt="" th:src="*{'data:picture/jpeg;base64,'+{user.file}}" style="width: 200px;height: 200px;"></li>
+
+
+                <!--    Name And Surname-->
+                <label for="customFiles"><span style="color:red"> <font size="5">Name And Surname</font></span></label>
+                <b>  <li class="list-group-item" th:text="${user.name} + ' ' + ${user.surname}"></li></b>
+
+                <!--  PhoneNumber-->
+                <label for="customFiles"><span style="color:red"> <font size="5">PhoneNumber</font></span></label>
+                <b> <li class="list-group-item" th:text="${user.phoneNumber}" ></li></b>
+
+                <!--   Gender-->
+                <label for="customFiles"><span style="color:red"> <font size="5">Gender</font></span></label>
+                <b><li class="list-group-item" th:text="${user.gender}"></li></b>
+
+                <!--   E-Mail-->
+                <label for="customFiles"><span style="color:red"> <font size="5">E-Mail</font></span></label>
+                <b><li class="list-group-item" th:text="${user.email}" ></li></b>
+
+                <a th:href="@{/list/edit/{id}(id=${user.id})}"
+                   class="btn btn-primary" style="background-color:blue; border-color:green;" >Change Data</a>
+            </ul>
+            <div class="text-center"> <h2> <a class="navbar-brand" th:href="@{/return}">return</a></h2></div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

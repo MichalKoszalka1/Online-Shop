@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset= "ISO-8859-1">
+  <title>Edit Data</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+<body  style="background-image:url('/img/edit.jpg');">
+<br><br><br>
+<div class="container" >
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card"  style="background-image:url('/img/blac.png');">
+      <h1 class="text-center" style="color:red;"><strong>Change Data</strong></h1>
+      <div class="card-body">
+        <form th:action="@{/user/{id} (id=${user.id})}" th:object="${user}" method="post" enctype="multipart/form-data">
+          <!--         Change User Name-->
+          <div class="form-group">
+            <div class="text-center">
+            <label style="color:green;" ><strong> <font size="5">Change User Name</font></strong></label> </div>
+            <b><input  type="text" name="name" th:field="*{name}" class="form-control" placeholder="Enter User Name " maxlength="24" minlength="2"/></b>
+          </div>
+          <!--        Change User Surname-->
+          <div class="form-group">
+            <div class="text-center">
+            <label style="color:green;" ><strong> <font size="5">Change User Surname</font></strong></label> </div>
+            <b><input  type="text" name="surname" th:field="*{surname}" class="form-control" placeholder="Enter User Surname" maxlength="24" minlength="2"/></b>
+          </div>
+          <!--         Change User PhoneNumber-->
+          <div class="form-group">
+            <div class="text-center">
+            <label style="color:green;" ><strong><font size="5"> Change User PhoneNumber</font></strong></label> </div>
+            <b><input  type="text" name="phoneNumber" th:field="*{phoneNumber}" class="form-control" placeholder="Enter User PhoneNumber"
+                       maxlength="9" minlength="9"/></b>
+          </div>
+          <!--          Change User E-Mail-->
+          <div class="form-group">
+            <div class="text-center">
+            <label style="color:green;" ><strong><font size="5"> Change User E-Mail</font></strong></label> </div>
+           <b><input type="email" name="email" th:field="*{email}" class="form-control" placeholder="Enter User E-Mail "/></b>
+          </div>
+          <!--          Change The User's Picture-->
+          <div class="form-group">
+            <div class="text-center">
+              <label style="color:green;" ><strong><font size="5"> Change The User's Picture</font></strong></label>
+            </div>
+            <div class="input-group mb-3">
+              <div class="custom-file">
+                <b><input type="file" name="picture"  class="custom-file-input"
+                       id="customFile" required> </b><label class="custom-file-label"
+                                               for="customFiles"><strong>Picture</strong></label>
+              </div>
+            </div>
+          </div>
+<!--          Change Gender-->
+          <div class="m-3">
+            <div class="text-center">
+            <label style="color:green;" ><strong> <font size="5"> Change Gender </font></strong></label>
+          </div>
+            <div class="text-center">
+            <div class="form-check form-check-inline">
+              <b> <input  class="form-check-input" type="radio" th:field="*{gender}" id="inlineRadio1" value="Male"></b>
+              <b>   <label class="form-check-label" for="inlineRadio1"><font style="color:white;">Male</font></label></b>
+            </div>
+
+            <div class="form-check form-check-inline">
+            <b> <input   class="form-check-input" type="radio" th:field="*{gender}" id="inlineRadio2" value="Female"></b>
+              <b>  <label class="form-check-label" for="inlineRadio2"><font style="color:white;">Female</font></label></b>
+            </div>
+          </div>
+          </div>
+<!--          Save Changes -->
+          <div class="box-footer">
+            <div class="text-center">
+              <button type="submit" style="background-color:green;  border-color:white;" ><font style="color:black;">Save Changes</font></button>
+              <!--          Return to Page UserInformation -->
+           <h2> <a class="navbar-brand" th:href="@{/comBack}">return</a></h2>
+            </div>
+          </div>
+         </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

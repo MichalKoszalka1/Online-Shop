@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset= "ISO-8859-1">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+    <title>ShoppingCart</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+
+</head>
+<body  style="background-color:black">
+
+<div th:replace="/fragments/topnav :: navbar-shoppingCart">
+
+</div>
+<br><br>
+
+<div th:replace="/fragments/categorynav :: categories">
+
+</div>
+ <div class="container text-center">
+ <table class="table table-dark">
+  <thead class="thead-dark">
+   <tr>
+<th scope="col">Product</th>
+<th scope="col">Quantity</th>
+<th scope="col">Brand</th>
+<th scope="col">Price/one-$</th>
+<th scope="col">Subtotal</th>
+<th scope="col">Delete</th>
+
+</tr>
+</thead>
+<tbody >
+
+<tr th:each="cartItem : ${shoppingCart.cartItem}">
+<th scope="row"><img alt="" th:src="*{'data:image/jpeg;base64,'+{cartItem.product.image}}" style="width: 100px;height: 100px;"></th>
+  <td> <form th:action="@{/updateShoppingCart}"  method="post">
+      <input type="hidden" th:value="${cartItem.id}"
+             name="item_id" />
+      <input type="number" name="quantity"
+            th:value="${cartItem.quantity}"
+            th:attr="max=${cartItem.product.quantity}"
+            class="form-control round-input form-control-sm" /><br>	<button class="btn btn-success btn-sm btn-custom"
+                                                                           type="submit">
+      <i class="fa fa-check"><img src="img/confirm.png" width="30px" height="30px"></i>
+  </button></form>
+  </td>
+    <td th:text="${cartItem.product.brand }">Brand</td>
+ <td th:text="${cartItem.product.costPrice + '$'}" >Price</td>
+  <td th:text="${cartItem.product.costPrice* cartItem.quantity + '$'}">Subtotal</td>
+     <td class="text-center"><a class="remove-from-cart"
+                                th:href="@{/removeCartItem/{id}(id = ${cartItem.id})}"
+                                data-toggle="tooltip"><i
+             class="fa fa-trash"></i><img src="img/delete.png" width="30px" height="30px"></a></td>
+
+</tr>
+  </tbody>
+</table>
+     <a class="remove-from-cart"
+        th:href="@{/clearShoppingCart}"
+        data-toggle="tooltip"><i
+             class="fa fa-trash"></i><img src="img/drop.png" width="50px" height="50px"></a>
+     <b style="color:white;">Subtotal: <span class="text-medium" >$[[${shoppingCart.totalPrice}]]</span></b>
+     </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset= "ISO-8859-1">
+    <title>Product Details</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+<body  style="background-image: url(/img/sett.jpg);">
+
+<br><br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-1"></div>
+        <div  class="col-6 product">
+            <div class="row">
+                <div class="col-md-5">
+                    <img alt="" th:src="*{'data:image/jpeg;base64,'+{product.image}}" style="width: 350px;height: 550px;">
+                </div>
+                <div class="product col-md-4">
+                    <br><br><br><br>
+                  <b>  <p class="productTitle"><font size="4" style="color:white;"> Name: </font> <font size="5" style="color:white;"><a class="productName"
+                                                          th:text="${product.name}">Name</a></font></p></b>
+                    <br>
+                    <b>  <p class="productTitle"><font size="4" style="color:white;"><strong> Quantity:</strong> </font> <font size="5" style="color:white;"><a class="productName"
+                          th:text="${product.quantity}">Avilable </a></font></p></b>
+
+                    <br>
+                        <b>    <p class="productTitle"><font size="4" style="color:white;">Size(cm): </font><font size="5" style="color:white;"> <a class="productName"
+                                                          th:text="${product.sizes + 'cm'}">Size</a></font></p></b>
+                    <br>
+                                <b>    <p class="productTitle"><font size="4" style="color:white;">Conditions: </font><font size="5" style="color:white;"> <a class="productName"
+                                                          th:text="${product.conditions}">Conditions</a></font></p></b>
+                    <br>
+                    <b>    <p class="productTitle"><font size="4" style="color:white;">Category: </font><font size="5" style="color:white;"> <a class="productName"
+                                            th:text="${product.category}">Category</a></font></p></b>
+                    <br>
+                    <b>   <p class="productTitle"><font size="4" style="color:white;">Brand: </font><font size="5" style="color:white;"> <a class="productName"
+                                                          th:text="${product.brand}">Brand</a></font></p></b>
+                    <br>
+                                        <b>  <font size="4" style="color:white;"> <p  class="productTitle" th:text="${'Mass: ' + product.mass + '/oz'}">Product Mass</font></p></b>
+                                        <br>
+                </div>
+                <div class="product col-md-3">
+                    <div class="card w-85" style="text-align: center;">
+                        <div class="bg-dark card-body">
+                            <b><h5 style="color:yellow;" class="card-title" th:text="${'$' + product.costPrice + '/one'}">Price</h5></b>
+
+                            <form th:action="@{/addToCart}" method="post" >
+                                <button  type="submit" class="btn btn-primary mt-2"  >Add
+                                    to cart</button>
+                                <br>
+                                <input type="hidden" name="id" th:value="${product.id}" />
+                                <br>
+                                <input type="number" min="1" value="1"   th:attr="max=${product.quantity}" name="quantity"
+                                       class="form-control" placeholder="quantity" />
+                                </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-7">
+                 <b>  <p  class="productTitle"> <font size="4" style="color:white;">Description:</font></p>
+                     <font size="4" style="color:white;">   <p class="card-text" th:text="${product.description}"></font></p></b>
+                </div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-2">
+        </div>
+    </div>
+         </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Main Page Of Shop</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+  <link th:href="@{/css/main.css}" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.png}"/>
+</head>
+
+<body  style="background-color:black">
+<div th:replace="/fragments/topnav :: navbar-home">
+
+</div>
+<br>
+
+<div th:replace="/fragments/categorynav :: categories">
+
+</div>
+
+
+<div class="text-center">
+  <form th:action="@{/page/1}">
+    <input type="hidden" name="sortField" th:value="${sortField}"/>
+    <input type="hidden" name="sortDir" th:value="${sortDir}"/>
+    <div style="color:yellow;"><font size="4"><strong>Search:</strong></font>
+    <input type="text" name="keyword" th:value="${keyword}"  class="form-group col-md-4" placeholder="Search By Name,Category And Brand" required/>
+    &nbsp;
+    <input type="submit" value="Search" class="btn btn-success"/>
+    &nbsp;
+    <input type="button" value="Clear" onclick="clearFilter()" class="btn btn-danger"/>
+
+    </div>
+  </form>
+</div>
+
+<div class="container text-center">
+  <table class="table table-dark" >
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Name</th>
+      <th scope="col">size</th>
+      <th scope="col">Category</th>
+      <th scope="col"><a th:href="@{'/page/' + ${currentPage} + '?sortField=costPrice&sortDir=' + ${reverseSortDir}}">Price</a></th>
+      <th scope="col">Details</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="product: ${products} " >
+      <th scope="row"><img alt="" th:src="*{'data:image/jpeg;base64,'+{product.image}}" style="width: 200px;height: 150px;"></th>
+      <td th:text="${product.name }">Name</td>
+      <td th:text="${product.sizes + 'cm'}">size</td>
+      <td th:text="${product.category}">category</td>
+      <td th:text="${product.costPrice + '$'}">Price</td>
+      <td>
+        <a th:href="@{/product/details/{id}(id=${product.id})}"
+           class="btn btn-primary">Details</a>
+      </td>
+
+    </tbody>
+  </table>
+
+  <div>&nbsp;</div>
+  <div>
+      <div style="color:white;"> <strong>Page: [[${currentPage}]] of [[${totalPages}]] Avilable Products: [[${totalItems}]]</strong>
+    &nbsp;&nbsp;
+    <a th:if="${currentPage > 1}" th:href="@{'/page/1?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  +${keyword != null ? '&keyword=' + keyword: ''}}">First</a>
+    <span th:unless="${currentPage > 1} " >First</span>
+
+    <span th:each="i: ${#numbers.sequence(1,totalPages)}">
+      <a th:if="${i != currentPage}" th:href="@{'/page/' + ${i}} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} +${keyword != null ? '&keyword=' + keyword: ''}">[[${i}]]</a>
+        <span th:unless= "${i != currentPage }">[[${i}]]</span>
+      &nbsp;&nbsp;
+    </span>
+  </div>  </div>  </div>
+<script type="text/javascript">
+    function clearFilter() {
+       window.location = "[[@{/access}]]";
+    }
+</script>
+ </body>
+</html>

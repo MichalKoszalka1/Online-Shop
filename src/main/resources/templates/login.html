@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset= "ISO-8859-1">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+<body style="background-color:black;">
+<br><br>
+<div class="container">
+    <div class="text-center"><font size="10" style="color:white;"><strong>Online-Shop</strong></font></div>
+    <br><br><br><br><br><br><br>
+    <form name="f" th:action="@{/login}" method="post">
+        <div class="text-center">  <h4 class="form-signin-heading product" style="color:white;"><strong>Please login</strong></h4></div>
+        <br>
+
+        <div  class="text-center"><p th:if="${param.error}" class="alert alert-error" style="color:red;"><strong>Wrong E-mail or password</strong></p>
+        <p  th:if="${param.logout}" class="alert alert-success" style="color:green;"><strong>You Have Been Logged Out Successfully</strong></p>
+        </div>
+
+        <div class="text-center"><p>
+            <label for="email" style="color:white;"><strong><font size="5">E-Mail</font></strong></label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="E-Mail" required="" autofocus="">
+        </p>
+        </div>
+        <div class="text-center">
+        <p>
+            <label for="password" style="color:white;"><strong><font size="5">Password</font></strong></label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+        </p>
+        <button class="btn btn-lg btn-warning btn-block" type="submit">Sign in</button>
+            <br>
+            <div class="text-center"> <h3> <a th:href="@{/Recording}"><strong>Stop Logging In</strong> </a></h3></div>
+</div>
+    </form>
+</div>
+</body>
+</html>
